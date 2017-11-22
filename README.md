@@ -19,7 +19,7 @@
 
 ### 카드 능력치
 
-- [구글 시트, "Front-card  List](https://goo.gl/cUWYwh) 참고
+- [구글 시트, "Front-card List"](https://goo.gl/cUWYwh) 참고
 
 ## 게임 룰 
 
