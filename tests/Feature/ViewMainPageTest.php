@@ -14,10 +14,7 @@ class ViewMainPageTest extends TestCase
      */
     public function test_main_page_shows_heading_text()
     {
-//        $response = $this->get('/');
-//        $response->assertStatus(200);
-
-        $this->visit('/')
-            ->assertSee('Front Card');
+        $response = $this->get('/');
+        $response->assertSee('<h1>Front Card</h1>');
     }
 }
