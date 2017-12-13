@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <p>welcome!</p>
                     You are logged in!
                 </div>
             </div>
