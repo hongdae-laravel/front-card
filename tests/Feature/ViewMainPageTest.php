@@ -17,4 +17,15 @@ class ViewMainPageTest extends TestCase
         $response = $this->get('/');
         $response->assertSee('<h1>Front Card</h1>');
     }
+
+    public function test_home_page_does_redirect_login_page_if_user_isnt_login()
+    {
+        $response = $this->get('/home');
+        $response->assertRedirect('/login');
+    }
+
+    public function test_home_page_shows_welcome_message_with_user_name()
+    {
+        $response = $this->get('/home');
+    }
 }
