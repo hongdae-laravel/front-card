@@ -13,7 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <p>{{ Auth::user()->name }}님 환영합니다.</p>
+                    <div>
+                        <p>{{ Auth::user()->name }}님 환영합니다.</p>
+                    </div>
                 </div>
             </div>
         </div>
