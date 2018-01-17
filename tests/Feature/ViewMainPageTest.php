@@ -2,11 +2,14 @@
 
 namespace Tests\Feature;
 
+use App\User;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ViewMainPageTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * ViewMainPageTest
      *
@@ -24,8 +27,18 @@ class ViewMainPageTest extends TestCase
         $response->assertRedirect('/login');
     }
 
+    /**
+     *
+     */
     public function test_home_page_shows_welcome_message_with_user_name()
     {
         $response = $this->get('/home');
+//        $this->artisan('db:seed', ['--class' => 'DatabaseTestSeeder']);
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user)
+            ->withSession(['foo' => 'bar'])
+            ->get('/home')
+            ->assertSee($user->name.'님 환영합니다.');
     }
 }
