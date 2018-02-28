@@ -16,6 +16,17 @@
                     <div>
                         <p>{{ Auth::user()->name }}님 환영합니다.</p>
                     </div>
+                    <div>
+                        <h2>{{ Auth::user()->name }}의 저장소</h2>
+                        <ul>
+                            <li>카드 보유: {{ Auth::user()->cardCount() }} 장</li>
+                        </ul>
+                        <ul>
+                            @foreach ( Auth::user()->getCards() as $card )
+                                {{ $card }}
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
