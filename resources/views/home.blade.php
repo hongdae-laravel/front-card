@@ -22,7 +22,7 @@
                             <li>카드 보유: {{ Auth::user()->cardCount() }} 장</li>
                         </ul>
                         <ul>
-                            @foreach ( Auth::user()->getCards() as $card )
+                            @foreach ( $cards as $card )
                                 {{ $card }}
                             @endforeach
                         </ul>
