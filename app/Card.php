@@ -26,4 +26,9 @@ class Card extends Model
     public function getTypeId() {
         return $this->typeId;
     }
+
+    public function users()
+    {
+        return $this->belongsToMany('App\Card');
+    }
 }

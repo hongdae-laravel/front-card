@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,8 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $userCards = \App\User::find(1)->cards()->get();
+        $allCards = DB::table('cards')->get();
+
         return view('home', [
-            'cards' => $cards,
+            'user' => Auth::user(),
+            'userCards' => $userCards,
+            'allCards' => $allCards,
         ]);
     }
 }

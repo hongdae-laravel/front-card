@@ -24,17 +24,72 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('cards')->insert([
-            'name' => 'Dragon',
+            'name' => 'Cerberos',
         ]);
 
-        DB::table('card_slots')->insert([
+        DB::table('cards')->insert([
+            'name' => 'Sphinx',
+        ]);
+
+        DB::table('cards')->insert([
+            'name' => 'Griffin',
+        ]);
+
+        DB::table('cards')->insert([
+            'name' => 'Minotauros',
+        ]);
+
+        DB::table('cards')->insert([
+            'name' => 'Cyclops',
+        ]);
+
+        DB::table('cards')->insert([
+            'name' => 'Siren',
+        ]);
+
+        DB::table('cards')->insert([
+            'name' => 'Basilisk',
+        ]);
+
+        DB::table('cards')->insert([
+            'name' => 'Myrmekes',
+        ]);
+
+        DB::table('cards')->insert([
+            'name' => 'Peryton',
+        ]);
+
+        DB::table('cards')->insert([
+            'name' => 'Satyrs',
+        ]);
+
+        DB::table('cards')->insert([
+            'name' => 'Chimera',
+        ]);
+
+        DB::table('card_user')->insert([
            'user_id' => 1,
            'card_id' => 1,
         ]);
 
-        DB::table('card_slots')->insert([
+        DB::table('card_user')->insert([
             'user_id' => 1,
             'card_id' => 2,
+        ]);
+
+        DB::table('card_user')->insert([
+            'user_id' => 1,
+            'card_id' => 3,
+        ]);
+
+        DB::table('card_user')->insert([
+            'user_id' => 1,
+            'card_id' => 4,
+        ]);
+
+        DB::table('card_user')->insert([
+            'user_id' => 1,
+            'card_id' => 5,
         ]);
     }
 }

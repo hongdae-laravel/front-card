@@ -14,18 +14,38 @@
                         </div>
                     @endif
                     <div>
-                        <p>{{ Auth::user()->name }}님 환영합니다.</p>
+                        <p>{{ $user->name }}님 환영합니다.</p>
                     </div>
                     <div>
-                        <h2>{{ Auth::user()->name }}의 저장소</h2>
+                        <h2>{{ $user->name }}의 저장소</h2>
+                        @if (count($userCards) > 0)
+                            <ul>
+                                <li>카드 보유: {{ count($userCards) }} 장</li>
+                            </ul>
+                        @else
+                            <ul>
+                                <li>보유한 카드가 없습니다.</li>
+                            </ul>
+                        @endif
                         <ul>
-                            <li>카드 보유: {{ Auth::user()->cardCount() }} 장</li>
-                        </ul>
-                        <ul>
-                            @foreach ( $cards as $card )
-                                {{ $card }}
+                            @foreach ( $userCards as $card )
+                                <li>{{ $card->name }}</li>
                             @endforeach
                         </ul>
+                    </div>
+                    <div>
+                        <h2>전체 카드 목록</h2>
+                        <ul>
+                            <li>총: {{ count($allCards) }} 장</li>
+                        </ul>
+                        <form action="" method="POST">
+                            <ul>
+                                @foreach ( $allCards as $card )
+                                    <li><input type="checkbox" value="{{ $card->name }}"/> {{ $card->name }}</li>
+                                @endforeach
+                            </ul>
+                            <button>카드 선택</button>
+                        </form>
                     </div>
                 </div>
             </div>

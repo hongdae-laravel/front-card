@@ -35,19 +35,19 @@ class User extends Authenticatable
         $user = Auth::user();
 
         // TODO: User에 해당하는 카드 슬롯 가져오기.
-        $cardSlot = $user->cardSlot()->whereUserId('1')->get();
+        $cardSlot = $user->cards()->get();
 
         return count($cardSlot);
     }
 
     public function getCards() {
-        $cardSlot = $user->cardSlot()->whereUserId('1')->get();
+        $cardSlot = $user->cards()->get();
 
         return $cardSlot;
     }
 
-    public function cardSlot()
+    public function cards()
     {
-        return $this->hasOne('App\CardSlot');
+        return $this->belongsToMany('App\Card');
     }
 }
