@@ -34,4 +34,13 @@ class HomeController extends Controller
             'allCards' => $allCards,
         ]);
     }
+
+    /**
+     * @param Request $request
+     * @param \App\User $user
+     */
+    public function update(Request $request, \App\User $user)
+    {
+        return dd($request->request);
+    }
 }

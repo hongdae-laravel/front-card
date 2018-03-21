@@ -38,10 +38,12 @@
                         <ul>
                             <li>총: {{ count($allCards) }} 장</li>
                         </ul>
-                        <form action="" method="POST">
+                        <form action="{{ route('home.update', $user->id)  }}" method="POST">
+                            {!! method_field('PUT') !!}
+                            {!! csrf_field() !!}
                             <ul>
                                 @foreach ( $allCards as $card )
-                                    <li><input type="checkbox" value="{{ $card->name }}"/> {{ $card->name }}</li>
+                                    <li><input type="checkbox" name="monters[]" value="{{ strtolower($card->name) }}"/> {{ $card->name }}</li>
                                 @endforeach
                             </ul>
                             <button>카드 선택</button>
