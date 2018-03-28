@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -24,6 +26,25 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
+
+    public function setCard($cards)
+    {
+        DB::table('card_user')->where('user_id', Auth::user()->id)->delete();
+
+        foreach ($cards as $card) {
+            DB::table('card_user')->insert([
+                'user_id' => Auth::user()->id,
+                'card_id' => $card->id,
+            ]);
+        }
+
+    }
+
+    public function cards()
+    {
+        return $this->belongsToMany('App\Card');
+    }
 }
