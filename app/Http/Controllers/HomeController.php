@@ -18,6 +18,7 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
+
     /**
      * Show the application dashboard.
      *
@@ -25,7 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $userCards = \App\User::find(1)->cards()->get();
+        $user = \App\User::find(Auth::user()->id);
+        $card = new \App\Card;
+
+        $fiveCards = $card->getFiveCards();
+        $user->setCard($fiveCards);
+
+        $userCards = $user->cards()->get();
         $allCards = DB::table('cards')->get();
 
         return view('home', [

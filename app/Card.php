@@ -27,6 +27,12 @@ class Card extends Model
         return $this->typeId;
     }
 
+    public function getFiveCards()
+    {
+        $fCards = Card::inRandomOrder()->take(5)->get();
+        return $fCards;
+    }
+
     public function users()
     {
         return $this->belongsToMany('App\Card');

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class User extends Authenticatable
 {
@@ -29,21 +30,17 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $cards = [ 'card1', 'card2', 'card3' ];
+    public function setCard($cards)
+    {
+        DB::table('card_user')->where('user_id', Auth::user()->id)->delete();
 
-    public function cardCount() {
-        $user = Auth::user();
+        foreach ($cards as $card) {
+            DB::table('card_user')->insert([
+                'user_id' => Auth::user()->id,
+                'card_id' => $card->id,
+            ]);
+        }
 
-        // TODO: User에 해당하는 카드 슬롯 가져오기.
-        $cardSlot = $user->cards()->get();
-
-        return count($cardSlot);
-    }
-
-    public function getCards() {
-        $cardSlot = $user->cards()->get();
-
-        return $cardSlot;
     }
 
     public function cards()
